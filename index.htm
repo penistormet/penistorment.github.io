@@ -135,20 +135,26 @@ MEMBERS<br>
   var currentIndex = 0;
   var audioPlayer = document.getElementById('audio-player');
 
-  // Load audio files from the "audio" folder
-  fetch('audio/')
-    .then(response => response.text())
-    .then(text => {
-      let parser = new DOMParser();
-      let htmlDoc = parser.parseFromString(text, 'text/html');
-      let links = htmlDoc.querySelectorAll('a');
-      links.forEach(link => {
-        if (link.href.endsWith('.mp3') || link.href.endsWith('.wav')) {
-          audioFiles.push(link.href);
+  // Function to fetch audio files from the "audio" folder in the root directory
+  function fetchAudioFiles() {
+    fetch('audio/')
+      .then(response => response.text())
+      .then(text => {
+        let parser = new DOMParser();
+        let htmlDoc = parser.parseFromString(text, 'text/html');
+        let links = htmlDoc.querySelectorAll('a');
+        links.forEach(link => {
+          if (link.href.endsWith('.mp3') || link.href.endsWith('.wav')) {
+            audioFiles.push(link.href);
+          }
+        });
+        if (audioFiles.length > 0) {
+          startMusic(); // Start playing the first audio file
         }
       });
-    });
+  }
 
+  // Function to start playing music
   function startMusic() {
     loadAudio(currentIndex);
     document.getElementById('overlay').style.display = 'none';
@@ -175,11 +181,12 @@ MEMBERS<br>
     currentIndex = (currentIndex + 1) % audioFiles.length;
     loadAudio(currentIndex);
   });
+
+  // Fetch audio files when the page loads
+  window.addEventListener('load', fetchAudioFiles);
 </script>
 
 </body>
-</html>
-
 </html>
 
 </html>

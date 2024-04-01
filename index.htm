@@ -131,43 +131,23 @@ MEMBERS<br>
 <div id="pentagram" onclick="togglePlayPause()"></div>
 
 <script>
-  var audioFiles = [];
+  var audioFiles = [
+    'https://dl.dropbox.com/scl/fi/hz9hractpo86whdkko961/wiseman.wav?rlkey=e1pkuaf99tcy1jv1zb3l4p1os&dl=0'
+  ];
   var currentIndex = 0;
   var audioPlayer = document.getElementById('audio-player');
 
-  // Function to fetch audio files from the "audio" folder in the root directory
-  function fetchAudioFiles() {
-    fetch('audio/')
-      .then(response => response.text())
-      .then(text => {
-        let parser = new DOMParser();
-        let htmlDoc = parser.parseFromString(text, 'text/html');
-        let links = htmlDoc.querySelectorAll('a');
-        links.forEach(link => {
-          if (link.href.endsWith('.mp3') || link.href.endsWith('.wav')) {
-            audioFiles.push(link.href);
-          }
-        });
-        if (audioFiles.length > 0) {
-          startMusic(); // Start playing the first audio file
-        }
-      });
-  }
-
-  // Function to start playing music
   function startMusic() {
     loadAudio(currentIndex);
     document.getElementById('overlay').style.display = 'none';
   }
 
-  // Function to load and play audio
   function loadAudio(index) {
     audioPlayer.src = audioFiles[index];
     audioPlayer.load();
     audioPlayer.play();
   }
 
-  // Function to toggle play/pause
   function togglePlayPause() {
     if (audioPlayer.paused) {
       audioPlayer.play();
@@ -175,19 +155,11 @@ MEMBERS<br>
       audioPlayer.pause();
     }
   }
-
-  // Function to play next audio
-  audioPlayer.addEventListener('ended', function() {
-    currentIndex = (currentIndex + 1) % audioFiles.length;
-    loadAudio(currentIndex);
-  });
-
-  // Fetch audio files when the page loads
-  window.addEventListener('load', fetchAudioFiles);
 </script>
 
 </body>
 </html>
+
 
 </html>
 

@@ -91,24 +91,6 @@ MEMBERS<br>
     display: none; /* Hide audio player initially */
   }
 
-  /* Play/Pause Button Styles */
-  #play-pause-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 9999;
-    opacity: 1; /* Initial opacity */
-    transition: opacity 1s ease-in-out; /* Fade transition */
-  }
-
-  #play-pause-btn:hover {
-    opacity: 1; /* Keep the button visible when hovered */
-  }
-
   /* Pentagram Styles */
   #pentagram {
     position: fixed;
@@ -142,7 +124,6 @@ MEMBERS<br>
 </div>
 
 <audio id="audio-player" controls autoplay>
-  <source src="https://31.filelu.com/d/w53k4elgjsbk5jtafkm52j7qsthhhfjtekf3omcwxy3s7dac5zi4wggn7ccjqoczszc5bctl/wiseman.wav" type="audio/wav">
   Your browser does not support the audio element.
 </audio>
 
@@ -150,23 +131,57 @@ MEMBERS<br>
 <div id="pentagram" onclick="togglePlayPause()"></div>
 
 <script>
+  var audioFiles = [];
+  var currentIndex = 0;
+  var audioPlayer = document.getElementById('audio-player');
+
+  // Load audio files from the "audio" folder
+  fetch('audio/')
+    .then(response => response.text())
+    .then(text => {
+      let parser = new DOMParser();
+      let htmlDoc = parser.parseFromString(text, 'text/html');
+      let links = htmlDoc.querySelectorAll('a');
+      links.forEach(link => {
+        if (link.href.endsWith('.mp3') || link.href.endsWith('.wav')) {
+          audioFiles.push(link.href);
+        }
+      });
+    });
+
   function startMusic() {
-    document.getElementById('audio-player').play();
+    loadAudio(currentIndex);
     document.getElementById('overlay').style.display = 'none';
+  }
+
+  // Function to load and play audio
+  function loadAudio(index) {
+    audioPlayer.src = audioFiles[index];
+    audioPlayer.load();
+    audioPlayer.play();
   }
 
   // Function to toggle play/pause
   function togglePlayPause() {
-    var audio = document.getElementById('audio-player');
-    if (audio.paused) {
-      audio.play();
+    if (audioPlayer.paused) {
+      audioPlayer.play();
     } else {
-      audio.pause();
+      audioPlayer.pause();
     }
   }
+
+  // Function to play next audio
+  audioPlayer.addEventListener('ended', function() {
+    currentIndex = (currentIndex + 1) % audioFiles.length;
+    loadAudio(currentIndex);
+  });
 </script>
 
 </body>
+</html>
+
+</html>
+
 </html>
 
 </html>

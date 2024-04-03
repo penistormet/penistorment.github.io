@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashing Image</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: flash 0.09s infinite alternate; /* Flashing animation */
+    }
+
+    /* Flashing animation */
+    @keyframes flash {
+        from {
+            filter: invert(0%); /* Start with normal colors */
+        }
+        to {
+            filter: invert(20%); /* Invert colors */
+        }
+    }
+</style>
+</head>
+<body>
+    <img id="flashImage" src="https://i.redd.it/iguucgwjbuf81.jpg" alt="Flashing Image" onclick="toggleFullscreen()">
+    
+    <script>
+        function toggleFullscreen() {
+            var img = document.getElementById('flashImage');
+
+            if (!document.fullscreenElement) {
+                img.requestFullscreen().then(() => {
+                    console.log('Fullscreen activated');
+                }).catch(err => {
+                    console.error('Fullscreen error:', err);
+                });
+            } else {
+                document.exitFullscreen().then(() => {
+                    console.log('Fullscreen deactivated');
+                }).catch(err => {
+                    console.error('Fullscreen error:', err);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

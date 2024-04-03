@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Denied</title>
+<style>
+    body {
+        background-color: black; /* Initial background color */
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 100px;
+        animation: flash 0.1s infinite alternate; /* Intense flashing */
+    }
+
+    .wavy-text {
+        color: rgb(255, 140, 236); /* Green text color */
+        display: inline-block; /* Allow transformation */
+        position: relative;
+        animation: wave 0.5s infinite linear, drop 1s infinite linear; /* Apply wave and drop animations */
+    }
+
+    /* Animation for each letter */
+    @keyframes wave {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        25% {
+            transform: translateY(-5px) rotate(-2deg);
+        }
+        50% {
+            transform: translateY(5px) rotate(2deg);
+        }
+        75% {
+            transform: translateY(-5px) rotate(-2deg);
+        }
+    }
+
+    /* Drop animation */
+    @keyframes drop {
+        0% {
+            top: 0;
+        }
+        100% {
+            top: 100vh; /* Drop to the bottom of the viewport */
+        }
+    }
+
+    /* Flashing animation */
+    @keyframes flash {
+        from {
+            background-color: black; /* Start with black */
+        }
+        to {
+            background-color: rgb(66, 58, 58); /* Transition to red */
+        }
+    }
+</style>
+</head>
+<body>
+    <div id="text-container">
+        <div class="wavy-text">
+            <span>W</span>
+            <span>r</span>
+            <span>o</span>
+            <span>n</span>
+            <span>g</span>
+            <span>&nbsp;</span>
+            <span>P</span>
+            <span>a</span>
+            <span>s</span>
+            <span>s</span>
+            <span>w</span>
+            <span>o</span>
+            <span>r</span>
+            <span>d</span>
+        </div>
+    </div>
+
+    <script>
+        // Function to duplicate the wavy text
+        function duplicateText() {
+            var textContainer = document.getElementById('text-container');
+            var originalText = document.querySelector('.wavy-text');
+            var newText = originalText.cloneNode(true);
+            textContainer.appendChild(newText);
+        }
+
+        // Duplicate the text every 0.5 seconds
+        setInterval(duplicateText, 100);
+    </script>
+</body>
+</html>

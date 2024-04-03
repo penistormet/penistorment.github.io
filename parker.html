@@ -24,18 +24,44 @@
             max-width: 100%;
             height: auto;
         }
+        #password-form {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="text-wall">
             <h1>Hi</h1>
-            <p>This is a text wall saying hi.</p>
+            <p>This is a test while under construction :3.</p>
         </div>
         <div class="image">
             <img src="https://www.dea.gov/sites/default/files/styles/large/public/2022-12/Fentanyl_oxy_30mg_bulk%20pill%20spill_2.jpg?h=9f1e7607&itok=67q1H_pI" alt="Pill Spill">
         </div>
         <div style="clear: both;"></div>
+
+        <!-- Password Form -->
+        <form id="password-form">
+            <label for="password">Enter password to access secret page:</label>
+            <input type="password" id="password" name="password">
+            <input type="submit" value="Submit">
+        </form>
     </div>
+
+    <script>
+        document.getElementById('password-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            var password = document.getElementById('password').value;
+
+            if (password === 'kitty') {
+                // If password is correct, redirect to game.html
+                window.location.href = 'allow.html';
+            } else {
+                // If password is incorrect, redirect to deny.html
+                window.location.href = 'deny.html';
+            }
+        });
+    </script>
 </body>
 </html>

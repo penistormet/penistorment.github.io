@@ -19,7 +19,26 @@
 Hello, this website is for PENIS TORMENT band, we are the best band in the 
 entire world.<br>
 MEMBERS<br>
-<font face="NSimSun" size="4" color="#00FF00">REECE,</font><font face="NSimSun" size="4" color="#0000FF">PEYTON,</font><font face="NSimSun" size="4" color="#FF9900">DYLAN,</font><font face="NSimSun" size="4" color="#6600CC">LUCAS,</font><font face="NSimSun" size="4" color="#CC0000">BRAYLEN,</font><font face="NSimSun" size="4" color="#FFFF66">NICK,</font><font face="NSimSun" size="4" color="#00FFFF">DALTON,</font><font face="NSimSun" size="4" color="#99CC00">LUCAS,</font><font face="NSimSun" size="4" color="#FF00FF">PARKER,</font>
+<font face="NSimSun" size="4" color="#00FF00">REECE,</font><font face="NSimSun" size="4" color="#0000FF">PEYTON,</font><font face="NSimSun" size="4" color="#FF9900">DYLAN,</font><font face="NSimSun" size="4" color="#6600CC">LUCAS,</font><font face="NSimSun" size="4" color="#CC0000">BRAYLEN,</font><font face="NSimSun" size="4" color="#FFFF66">NICK,</font><font face="NSimSun" size="4" color="#00FFFF">DALTON,</font><font face="NSimSun" size="4" color="#99CC00">LUCAS,</font><font face="NSimSun" size="4" color="#FF00FF"><a href="parker.html">PARKER<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adding Hyperlinks to Text Without Highlighting</title>
+  <style>
+    /* Style the anchor tag to match the surrounding text */
+    a {
+      color: inherit; /* Inherit the color from the parent element */
+      text-decoration: inherit; /* Inherit the text decoration from the parent element */
+    }
+  </style>
+  </head>
+  <body>
+  
+  <p><a href="https://example.com"></a></p>
+  
+  </body>
+  </html></a> </p></font>
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
 <p>&nbsp;</p>
@@ -46,116 +65,26 @@ MEMBERS<br>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Click to Play Music</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-  }
-
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    font-size: 2em;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 9999;
-    overflow: hidden;
-  }
-
-  #text {
-    animation: wave 2s infinite;
-  }
-
-  @keyframes wave {
-    0% {
-      transform: translateX(-20%);
-    }
-    50% {
-      transform: translateX(20%);
-    }
-    100% {
-      transform: translateX(-20%);
-    }
-  }
-
-  #audio-player {
-    display: none; /* Hide audio player initially */
-  }
-
-  /* Pentagram Styles */
-  #pentagram {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M12 2l-2.56 7.43h-8.06l6.5 4.93-2.56 7.44 6.5-4.93 6.5 4.93-2.56-7.44 6.5-4.93h-8.06z"/></svg>');
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    opacity: 1; /* Initial opacity */
-    animation: fadeOut 6s forwards; /* Fade out after 6 seconds */
-    z-index: 9999;
-  }
-
-  /* Fade Out Animation */
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-</style>
+<title>Autoplay Audio After 3 Seconds</title>
+<script>
+  window.onload = function() {
+    setTimeout(function() {
+      var audio = document.getElementById('myAudio');
+      audio.play();
+    }, 1000); // 3000 milliseconds = 3 seconds
+  };
+</script>
 </head>
 <body>
-<div id="overlay" onclick="startMusic()">
-  <div id="text">Click to View</div>
-</div>
 
-<audio id="audio-player" controls autoplay>
+<audio id="myAudio">
+  <source src="https://dl.dropbox.com/scl/fi/hz9hractpo86whdkko961/wiseman.wav?rlkey=e1pkuaf99tcy1jv1zb3l4p1os&dl=0" type="audio/wav">
   Your browser does not support the audio element.
 </audio>
 
-<!-- Pentagram (Play/Pause Button) -->
-<div id="pentagram" onclick="togglePlayPause()"></div>
+</body>
+</html>
 
-<script>
-  var audioFiles = [
-    'https://dl.dropbox.com/scl/fi/hz9hractpo86whdkko961/wiseman.wav?rlkey=e1pkuaf99tcy1jv1zb3l4p1os&dl=0'
-  ];
-  var currentIndex = 0;
-  var audioPlayer = document.getElementById('audio-player');
-
-  function startMusic() {
-    loadAudio(currentIndex);
-    document.getElementById('overlay').style.display = 'none';
-  }
-
-  function loadAudio(index) {
-    audioPlayer.src = audioFiles[index];
-    audioPlayer.load();
-    audioPlayer.play();
-  }
-
-  function togglePlayPause() {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-    } else {
-      audioPlayer.pause();
-    }
-  }
-</script>
 
 </body>
 </html>

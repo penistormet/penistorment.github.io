@@ -41,30 +41,48 @@
         </div>
         <div style="clear: both;"></div>
 
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Form</title>
+</head>
+<body>
+    <div>
         <!-- Password Form -->
-        <form id="password-form">
+        <form id="password-form" onsubmit="submitForm(event)">
             <label for="password">Enter password to access secret page:</label>
             <input type="password" id="password" name="password">
             <input type="submit" value="Submit">
         </form>
     </div>
 
-    <script>
-        document.getElementById('password-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting
+    <iframe id="validation-frame" style="display:none;"></iframe>
 
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            
             var password = document.getElementById('password').value;
 
-            if (password === 'kitty') {
-                // If password is correct, redirect to game.html
+            //haha fuck you i fixed it where you cant see it retarded faggot 
+            document.getElementById('validation-frame').src = 'validate.html?password=' + encodeURIComponent(password);
+        }
+
+        function handleValidationResult(valid) {
+            if (valid) {
+                // If password is correct, redirect to allow.html
                 window.location.href = 'allow.html';
             } else {
                 // If password is incorrect, redirect to deny.html
                 window.location.href = 'deny.html';
             }
-        });
+        }
     </script>
 </body>
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,20 +94,28 @@
     background-color: pink;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-y: scroll; /* Show scrollbar always */
   }
 
-  .media-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 200px;
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: pink;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    border: 3px solid pink;
+    border-radius: 10px;
   }
 
   .audio-player {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #fff;
+    background-color: pink; /* Changed background color to pink */
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -97,17 +123,9 @@
     align-items: center;
   }
 
-  .audio-select {
-    margin-right: 10px;
-  }
-
   audio {
+    width: 300px;
     margin-right: 10px;
-  }
-
-  video {
-    width: 100%;
-    height: auto;
   }
 
   /* Hide volume control and pause button */
@@ -122,24 +140,16 @@
 </head>
 <body>
 
-<div class="media-container">
-  <video id="video" autoplay>
-    
-    Your browser does not support the video tag.
-  </video>
-</div>
-
 <div class="audio-player">
-  <audio id="audio" autoplay>
+  <audio id="audio" controls>
     <!-- Placeholder audio source -->
-    <source src="https://penistorment.xyz/test.mp3" type="audio/mpeg">
+    <source src="#" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <select id="audio-select" class="audio-select">
-    <option value="https://penistorment.xyz/test.mp3" selected>Song 1</option>
-    <!-- Add more options for additional songs -->
-    <option value="#">Placeholder Song 2</option>
-    <option value="#">Placeholder Song 3</option>
+  <select id="audio-select">
+    <option value="https://penistorment.xyz/test.mp3">Benadryl Angyl ❤</option>
+    <option value="https://penistorment.xyz/copkiller.mp3">New Rocks</option>
+    <option value="https://penistorment.xyz/copkiller.mp3">Cop Killer </option>
   </select>
 </div>
 
@@ -147,41 +157,25 @@
   document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('audio');
     const audioSelect = document.getElementById('audio-select');
-    const video = document.getElementById('video');
 
-    // Set initial playback position to 5 seconds
-    video.addEventListener('canplay', function() {
-      video.currentTime = 5;
-    });
+    // Automatically play "Song 1" when entering the page
+    audioSelect.value = "https://penistorment.xyz/test.mp3";
+    audioSelect.dispatchEvent(new Event('change'));
+  });
 
-    // Prevent seeking in the video
-    video.addEventListener('seeking', function(e) {
-      e.preventDefault();
-      this.currentTime = 0;
-    });
-
-    // Prevent right-click on the video
-    video.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-
-    // Automatically play the selected audio
-    audioSelect.addEventListener('change', function() {
-      audio.src = this.value;
-      if (this.value !== '#') {
-        audio.play(); // Auto-play the selected song if not a placeholder
-      }
-    });
-
-    // Autoplay the audio
+  document.getElementById('audio-select').addEventListener('change', function() {
+    const audio = document.getElementById('audio');
+    audio.src = this.value;
     audio.play();
+  });
+
+  document.addEventListener('mousemove', function() {
+    const audio = document.getElementById('audio');
+    if (audio.paused) {
+      audio.play();
+    }
   });
 </script>
 
 </body>
-</html>
-    
-</html>
-
-
 </html>

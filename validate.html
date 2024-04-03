@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+</head>
+<body>
+    <script>
+        // Extract the password from the URL parameters
+        var params = new URLSearchParams(window.location.search);
+        var password = params.get('password');
+
+        // Define the correct password
+        var correctPassword = "kitty";
+
+        // Compare the entered password with the correct one
+        var valid = (password === correctPassword);
+
+        // Send the validation result back to the parent window
+        parent.handleValidationResult(valid);
+    </script>
+</body>
+</html>

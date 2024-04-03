@@ -6,6 +6,7 @@
     <title>Document</title>
     <style>
         .container {
+            position: relative;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -32,11 +33,11 @@
 <body>
     <div class="container">
         <div class="text-wall">
-            <h1>Hi</h1>
-            <p>This is a test while under construction :3.</p>
+            <h1>7w7</h1>
+            <p>hi my name is parker i code this poorly made website and im a drug addict currently hold a nice criminal record cause im super silly if you see me in public shoot me right in the head i make producer tags and sample audio for soundcloud i like cats and the color blue im in the 2nd grade and i learned to spell email me (kitty@transgender.army) i wont respond 110% of the time but ill see it eventually ask me for additions to the website if you want DMCA takedowns are ignored call my cellphone (952) 895-4600 my secratary will pick up during open hours (24/7).</p>
         </div>
         <div class="image">
-            <img src="https://www.dea.gov/sites/default/files/styles/large/public/2022-12/Fentanyl_oxy_30mg_bulk%20pill%20spill_2.jpg?h=9f1e7607&itok=67q1H_pI" alt="Pill Spill">
+            <img src="https://media1.giphy.com/media/kZqbBT64ECtjy/200w.gif?cid=6c09b95234zg0rg3h02lac6locpdzo3tpk6muz1n4c9u8crp&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Pill Spill">
         </div>
         <div style="clear: both;"></div>
 
@@ -64,4 +65,123 @@
         });
     </script>
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modernized Audio Queue</title>
+<style>
+  body {
+    background-color: pink;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .media-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+  }
+
+  .audio-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+  }
+
+  .audio-select {
+    margin-right: 10px;
+  }
+
+  audio {
+    margin-right: 10px;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Hide volume control and pause button */
+  audio::-webkit-media-controls-volume-slider {
+    display: none;
+  }
+
+  audio::-webkit-media-controls-play-button {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="media-container">
+  <video id="video" autoplay>
+    
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="audio-player">
+  <audio id="audio" autoplay>
+    <!-- Placeholder audio source -->
+    <source src="https://penistorment.xyz/test.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <select id="audio-select" class="audio-select">
+    <option value="https://penistorment.xyz/test.mp3" selected>Song 1</option>
+    <!-- Add more options for additional songs -->
+    <option value="#">Placeholder Song 2</option>
+    <option value="#">Placeholder Song 3</option>
+  </select>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio');
+    const audioSelect = document.getElementById('audio-select');
+    const video = document.getElementById('video');
+
+    // Set initial playback position to 5 seconds
+    video.addEventListener('canplay', function() {
+      video.currentTime = 5;
+    });
+
+    // Prevent seeking in the video
+    video.addEventListener('seeking', function(e) {
+      e.preventDefault();
+      this.currentTime = 0;
+    });
+
+    // Prevent right-click on the video
+    video.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Automatically play the selected audio
+    audioSelect.addEventListener('change', function() {
+      audio.src = this.value;
+      if (this.value !== '#') {
+        audio.play(); // Auto-play the selected song if not a placeholder
+      }
+    });
+
+    // Autoplay the audio
+    audio.play();
+  });
+</script>
+
+</body>
+</html>
+    
+</html>
+
+
 </html>

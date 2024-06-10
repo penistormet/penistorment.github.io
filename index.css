@@ -1,0 +1,15 @@
+body {
+
+  }
+  
+  img {
+    position: absolute;
+    border: solid 1px black; /*Remove this, just for visualation without img sources*/
+  }
+
+  
+  .r1, .r2, .r3 {
+    transform: translateY(1044px);
+    height: 200px;
+ 
+  }
